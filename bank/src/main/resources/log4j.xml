@@ -18,7 +18,7 @@
 
 
     <category name="org.springframework.security">
-        <priority value="INFO" />
+        <priority value="DEBUG" />
     </category>
 
     <root>

@@ -8,7 +8,6 @@
 						http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd">
 	<display-name>superbanken</display-name>
 
-    <!--
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -18,22 +17,24 @@
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	-->
-    
-	<context-param>
+
+		<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:applicationContext-saml.xml</param-value>
-	</context-param>
+        <param-value>classpath:applicationContext-saml.xml</param-value>
+            <!--
+            <param-value>classpath:applicationContext-simple.xml</param-value>
+            -->
+        </context-param>
 
 	<servlet>
-        <servlet-name>bank</servlet-name>
+        <servlet-name>nettbank</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>bank</servlet-name>
-        <url-pattern>*.do</url-pattern>
+        <servlet-name>nettbank</servlet-name>
+        <url-pattern>/nettbank/*</url-pattern>
     </servlet-mapping>
 	
 	<listener>
