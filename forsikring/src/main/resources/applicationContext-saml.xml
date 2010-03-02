@@ -68,7 +68,7 @@
         </constructor-arg>
         <!-- OPTIONAL property: can tell the system which IDP should be used for authenticating user by default. -->
         <property name="defaultIDP" value="http://localhost:8080/opensso"/>
-        <property name="hostedSPName" value="http://localhost:8090" />
+        <property name="hostedSPName" value="http://localhost:9090" />
     </bean>
 
     <!-- Class loading incoming SAML messages from httpRequest stream -->
