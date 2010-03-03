@@ -1,0 +1,61 @@
+JavaBin Presentation
+
+TODO:
+
+DONE make sure javabin demo actually signs and validates authrequests and assertions
+
+DONE make sure SSO between bank and forsikring works
+
+fix the slides
+
+
+NOTES:
+
+____________________________________________________
+Generate certificates for the service provider Bank:
+----------------------------------------------------
+
+1. create certificates
+keytool -genkeypair -alias bank-cert -keyalg RSA -keystore bank-keystore -storetype JKS
+keytool -export -alias bank-cert -file bank-cert.pem -rfc -keystore bank-keystore -storetype JKS -storepass TANDBERG
+
+2. update the sp.xml file with bank public key
+
+____________________________________________________
+Generate certificates for the service provider Bank:
+----------------------------------------------------
+
+1. create certificates
+keytool -genkeypair -alias forsikring-cert -keyalg RSA -keystore forsikring-keystore -storetype JKS
+keytool -export -alias forsikring-cert -file forsikring-cert.pem -rfc -keystore forsikring-keystore -storetype JKS -storepass TANDBERG
+
+2. update the sp.xml file with forsikring public key
+
+__________________________
+Export opensso public key:
+--------------------------
+
+<install-dir/deploy-dir>$ keytool -export -alias test -file opensso-cert.pem -rfc -keystore keystore.jks -storetype JKS -storepass changeit
+
+
+##################
+Setting up opensso:
+##################
+
+1. Deploy war using tomcat
+
+2. Common Tasks -> Create Hosted Identity Provider 
+2a. let opensso create metadata
+2b. choose "test" as signing key
+2c. create new Circle Of Trust if not configured
+2d. Federation -> Entity Provider -> IDP : Select request/response signing for the top one
+2e. Same place: enter "test" as certificate in "Certificate Aliases -> Signing"
+
+3. Common Tasks -> Create Remote Service Provider (one for bank and one for forsikring)
+3a. Select metadata file for SP
+3b. add to existing COT
+3c. an exception might appear complaining about LIBCOT
+3d. workaround: Go to Federation -> COT and manually add the service provider to the COT
+3e. Federation -> Entity Provider -> SP : Select check boxes for signing of requests and assertions (3 top ones)
+
+
