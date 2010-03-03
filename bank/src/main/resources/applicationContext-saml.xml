@@ -17,13 +17,13 @@
 
     <!-- Alias of the key used for SAML signing and encryption/decryption -->
     <bean name="privateKey" class="java.lang.String">
-        <constructor-arg value="apollo"/>
+        <constructor-arg value="bank-cert"/>
     </bean>
 
     <!-- Key manager, set the JKS path and password to open the datastore -->
     <bean id="keyStore" class="org.springframework.security.saml.key.JKSKeyManager">
-        <constructor-arg index="0" value="classpath:samlKeystore.jks"/>
-        <constructor-arg index="1" value="nalle123"/>
+        <constructor-arg index="0" value="classpath:bank-keystore"/>
+        <constructor-arg index="1" value="TANDBERG"/>
     </bean>
 
     <!-- Set keys which should be available to the system in the map, one of these keys must be also
@@ -34,7 +34,7 @@
         </constructor-arg>
         <constructor-arg index="1">
             <map>
-                <entry key="apollo" value="nalle123"/>
+                <entry key="bank-cert" value="TANDBERG"/>
             </map>
         </constructor-arg>
     </bean>
