@@ -106,12 +106,15 @@
             </plugin>
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>7.0.0.v20091005</version>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>6.1.22</version>
                 <configuration>
+                    <webAppConfig>
+                        <contextPath>/</contextPath>
+                    </webAppConfig>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                     <connectors>
-                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
                             <port>8090</port>
                             <maxIdleTime>60000</maxIdleTime>
                         </connector>

@@ -9,10 +9,7 @@ public class BankController {
 
     @RequestMapping(value = "/home")
 	public ModelAndView showNettbank() throws Exception {
-		ModelAndView view = new ModelAndView();
-		view.setViewName("nettbank");
-        view.addObject("user", "username");
-		return view;
+		return new ModelAndView("nettbank");
 	}
 	
 }

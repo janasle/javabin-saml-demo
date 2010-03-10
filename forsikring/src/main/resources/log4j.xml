@@ -8,7 +8,7 @@
 		</layout>
 	</appender>
 	
-	<category name="org.eclipse.jetty">
+	<category name="org.mortbay.jetty">
         <priority value="DEBUG" />
     </category>
 
